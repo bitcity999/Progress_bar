@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  margin: 0;
+  width: 100%;  
+  height: 200vh;
+  background: black;
+}
+::-webkit-scrollbar {
+            width: 0px;
+        }
+.progress-container {
+  height: 10px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  position: fixed;
+  margin-top: 50px;
+}
+
+.progress-bar {
+  height: 10px;
+  background: #04AA6D;
+  width: 0%;
+  border-radius: 10px;
+  animation: animate 2s linear infinite;
+}
+.progress-bar::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(#008aff,#00ffe7);
+            filter: blur(15px);
+        }
+@keyframes animate {
+  0%,100% {
+  filter: hue-rotate(0deg);
+  }
+  50% {
+  filter: hue-rotate(360deg);
+  }
+}
+</style>
+</head>
+<body>
+
+
+  <div class="progress-container">
+    <div class="progress-bar" id="myBar"></div>
+  </div>  
+
+
+<script>
+window.onscroll = function() {myFunction()};
+
+function myFunction() {
+  var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+  var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  var scrolled = (winScroll / height) * 100;
+  document.getElementById("myBar").style.width = scrolled + "%";
+}
+</script>
+
+</body>
+</html> 
